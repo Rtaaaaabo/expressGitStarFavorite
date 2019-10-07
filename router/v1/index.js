@@ -1,10 +1,6 @@
 const express = require("express");
 const router = express.Router();
 
-router.get("/", (req, res) => {
-  res.json({
-    message: "こんにちは！"
-  });
-});
+router.use("/githubstar", require("./githubstar.js"));
 
 module.exports = router;
