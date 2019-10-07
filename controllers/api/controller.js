@@ -2,7 +2,7 @@
 
 const Promise = require("bluebird");
 const Favorite = require("../../models/favotite");
-const GithubCollection = require("../../collections/githubStarCollection");
+const FavoriteCollection = require("../../collections/favoriteCollection");
 
 function getFavorite(req, res) {
   const id = req.params.id;
@@ -19,6 +19,16 @@ function getFavorite(req, res) {
     })
     .then(favorite => {
       res.json(favorite.toJSON());
+    })
+    .catch(error => {
+      res.status(500).json({ msg: error.message });
+    });
+}
+
+function getFavorites(req, res) {
+  FavoriteCollection.getList()
+    .then(favoites => {
+      res.json(favoites);
     })
     .catch(error => {
       res.status(500).json({ msg: error.message });
