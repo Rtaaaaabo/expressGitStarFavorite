@@ -1,19 +1,20 @@
 
-exports.up = function(knex, Promise) {
+exports.up = function(knex) {
   return Promise.all([
-      knex.schema.createTable('favarite', (favarite) => {
-          favarite.increments('id').primary();
-          favarite.string('repository_name');
-          favarite.string('url');
-          favarite.string('description');
-          favarite.string('language');
-          favarite.string('owner_avator_url');
-          favarite.string('owner_login_name');
+      knex.schema.createTable('favarite', (table) => {
+          table.increments('id').primary();
+          table.string('repository_name');
+          table.string('url');
+          table.string('description');
+          table.string('language');
+          table.string('owner_avator_url');
+          table.string('owner_login_name');
+          table.timestamps();
       })
   ])
 };
 
-exports.down = function(knex, Promise) {
+exports.down = function(knex) {
     return Promise.all([
         knex.schema.dropTable('favarite')
     ])
