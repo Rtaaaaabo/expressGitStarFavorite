@@ -3,10 +3,8 @@ const Promise = require("bluebird");
 const FavoriteCollection = require("../../collections/favariteCollection");
 
 function getIndex(req, res) {
-  console.log("最初のところ");
   FavoriteCollection.getList()
     .then(favorite => {
-      console.log("ここは？");
       res.json(favorite);
     })
     .catch(error => {
