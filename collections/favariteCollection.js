@@ -1,20 +1,25 @@
-const Bookshelf = require('../bookshelf');
-const Favarite = require('../models/favarite');
-const Promise = require('bluebird');
+const Bookshelf = require("../bookshelf");
+const Favorite = require("../models/favarite");
+const Promise = require("bluebird");
 
-const FavariteCollection = Bookshelf.Collection.extend({
-    model: Favarite,
-}, {
+const FavoriteCollection = Bookshelf.Collection.extend(
+  {
+    model: Favorite
+  },
+  {
     getList: function() {
-        return this()
+      return new this()
         .fetch()
         .then(function(collection) {
-            return collection.toJSON();
+          console.log("Collections Scucess");
+          return collection.toJSON();
         })
         .catch(function(error) {
-            throw error;
+          console.log("collections Error");
+          throw error;
         });
     }
-});
+  }
+);
 
-module.exports = FavariteCollection;
+module.exports = FavoriteCollection;

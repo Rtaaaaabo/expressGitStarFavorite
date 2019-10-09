@@ -1,16 +1,19 @@
 "use strict";
-const Promise = require('bluebird');
-const FavariteCollection = require('../../collections/favariteCollection');
+const Promise = require("bluebird");
+const FavoriteCollection = require("../../collections/favariteCollection");
 
 function getIndex(req, res) {
-  FavariteCollection.getList()
-  .then((favarite) => {
-    res.json(favarite);
-  })
-  .catch(error => {
-    res.status(500).json({msg: error.message});
-  })
-};
+  console.log("最初のところ");
+  FavoriteCollection.getList()
+    .then(favorite => {
+      console.log("ここは？");
+      res.json(favorite);
+    })
+    .catch(error => {
+      console.log("ここにも来ていない？");
+      res.status(500).json({ msg: error.message });
+    });
+}
 
 module.exports = {
   getIndex: getIndex
