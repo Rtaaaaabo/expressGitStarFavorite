@@ -1,7 +1,7 @@
 "use strict";
 
 const Promise = require("bluebird");
-const Favorite = require("../../models/favatite");
+const Favorite = require("../../models/favarite");
 const FavoriteCollection = require("../../collections/favariteCollection");
 
 function getFavorite(req, res) {

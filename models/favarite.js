@@ -3,11 +3,11 @@
 const Bookshelf = require("../bookshelf");
 const Promise = require("bluebird");
 
-const Favarite = Bookshelf.Model.extend(
+const Favorite = Bookshelf.Model.extend(
   {
     tableName: "favarite"
   },
   {}
 );
 
-module.exports = Favarite;
+module.exports = Favorite;
