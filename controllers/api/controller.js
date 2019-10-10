@@ -1,8 +1,8 @@
 "use strict";
 
 const Promise = require("bluebird");
-const Favorite = require("../../models/favotite");
-const FavoriteCollection = require("../../collections/favoriteCollection");
+const Favorite = require("../../models/favatite");
+const FavoriteCollection = require("../../collections/favariteCollection");
 
 function getFavorite(req, res) {
   const id = req.params.id;
@@ -35,14 +35,15 @@ function getFavorites(req, res) {
     });
 }
 
-function postFavoite(req, res) {
+function postFavorite(req, res) {
   new Favorite({
     repository_name: req.body.repository_name,
     url: req.body.url,
     description: req.body.description,
     language: req.body.language,
     owner_avator_url: req.body.owner_avator_url,
-    owner_login_name: req.body.owner_login_name
+    owner_login_name: req.body.owner_login_name,
+    created_at: new Date().toISOString()
   }).save(),
     then(favorite => {
       res.json(favorite.id);
@@ -56,6 +57,7 @@ function deleteFavorite(req, res) {
     .where("id", req.params.id)
     .destroy()
     .then(favorite => {
+      console.log(favorite);
       res.json({ message: "success" });
     })
     .catch(error => {
@@ -66,6 +68,6 @@ function deleteFavorite(req, res) {
 module.exports = {
   getFavorite: getFavorite,
   getFavorites: getFavorites,
-  postFavoite: postFavoite,
+  postFavorite: postFavorite,
   deleteFavorite: deleteFavorite
 };
