@@ -11,7 +11,7 @@ const FavoriteCollection = Bookshelf.Collection.extend(
       return new this()
         .fetch()
         .then(function(collection) {
-          console.log("Collections Scucess");
+          console.log("Collections Sucess");
           return collection.toJSON();
         })
         .catch(function(error) {

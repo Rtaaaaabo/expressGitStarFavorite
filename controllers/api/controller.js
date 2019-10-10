@@ -44,8 +44,7 @@ function postFavorite(req, res) {
     owner_avator_url: req.body.owner_avator_url,
     owner_login_name: req.body.owner_login_name,
     created_at: new Date().toISOString()
-  }).save(),
-    then(favorite => {
+  }).save().then(favorite => {
       res.json(favorite.id);
     }).catch(error => {
       res.status(500).json({ msg: error.message });
