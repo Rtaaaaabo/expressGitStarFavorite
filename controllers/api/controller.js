@@ -37,16 +37,19 @@ function getFavorites(req, res) {
 
 function postFavorite(req, res) {
   new Favorite({
-    repository_name: req.body.repository_name,
+    repository_name: req.body.repositoryName,
     url: req.body.url,
     description: req.body.description,
     language: req.body.language,
-    owner_avator_url: req.body.owner_avator_url,
-    owner_login_name: req.body.owner_login_name,
+    owner_avator_url: req.body.ownerAvatorUrl,
+    owner_login_name: req.body.ownerLoginName,
     created_at: new Date().toISOString()
-  }).save().then(favorite => {
+  })
+    .save()
+    .then(favorite => {
       res.json(favorite.id);
-    }).catch(error => {
+    })
+    .catch(error => {
       res.status(500).json({ msg: error.message });
     });
 }
@@ -56,7 +59,6 @@ function deleteFavorite(req, res) {
     .where("id", req.params.id)
     .destroy()
     .then(favorite => {
-      console.log(favorite);
       res.json({ message: "success" });
     })
     .catch(error => {
